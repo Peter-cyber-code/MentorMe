@@ -1,0 +1,22 @@
+# Services d'infrastructure pour le développement local :
+#   docker compose up -d
+# puis, dans .env : DATABASE_URL et REDIS_URL comme dans .env.example
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: mentorme
+      POSTGRES_USER: mentorme
+      POSTGRES_PASSWORD: mentorme
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:

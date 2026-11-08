@@ -1,0 +1,17 @@
+# Secrets et données locales
+.env
+*.sqlite3
+media/
+staticfiles/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store

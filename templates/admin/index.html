@@ -1,0 +1,18 @@
+{% extends "admin/index.html" %}
+{% block content %}
+{% if pending_role_requests or pending_call_applications or pending_support %}
+<div style="margin:0 0 20px;padding:14px 18px;background:#fdebd3;border:1px solid #edaa3a;border-radius:8px;line-height:1.7">
+  <strong>À traiter :</strong>
+  {% if pending_role_requests %}
+    <br>• <a href="{% url 'admin:profiles_rolerequest_changelist' %}"><b>{{ pending_role_requests }}</b> demande(s) de rôle (mentor, expert…) en attente de validation</a>
+  {% endif %}
+  {% if pending_support %}
+    <br>• <a href="{% url 'admin:accounts_supportrequest_changelist' %}"><b>{{ pending_support }}</b> message(s) d'aide (« Nous contacter ») sans réponse</a>
+  {% endif %}
+  {% if pending_call_applications %}
+    <br>• <a href="{% url 'admin:calls_callapplication_changelist' %}"><b>{{ pending_call_applications }}</b> candidature(s) à un appel à projets à examiner</a>
+  {% endif %}
+</div>
+{% endif %}
+{{ block.super }}
+{% endblock %}
